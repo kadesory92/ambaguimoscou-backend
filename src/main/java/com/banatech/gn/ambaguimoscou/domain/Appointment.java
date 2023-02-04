@@ -1,7 +1,6 @@
 package com.banatech.gn.ambaguimoscou.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +11,9 @@ import java.util.Date;
 @Setter
 @NoArgsConstructor @RequiredArgsConstructor
 @Entity
-@Table(name = "appointments")
 public class Appointment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date date;
     private Date hour;
