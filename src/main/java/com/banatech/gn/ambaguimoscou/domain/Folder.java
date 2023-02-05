@@ -10,7 +10,6 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "Folders")
 public class Folder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

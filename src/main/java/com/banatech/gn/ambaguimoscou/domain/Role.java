@@ -12,7 +12,6 @@ import java.util.Set;
 @Setter
 @Getter
 @Entity
-@Table(name = "Roles")
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
