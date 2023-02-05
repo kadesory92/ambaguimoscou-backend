@@ -8,14 +8,13 @@ import lombok.Setter;
 
 import java.util.Set;
 
-@NoArgsConstructor @RequiredArgsConstructor
 @Setter @Getter
 @Entity
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer title;
+    private String title;
     private String description;
     @OneToMany(mappedBy = "category")
     private Set<Post> posts;

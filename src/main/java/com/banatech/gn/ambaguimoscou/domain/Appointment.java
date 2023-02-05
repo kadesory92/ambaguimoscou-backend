@@ -9,7 +9,6 @@ import lombok.Setter;
 import java.util.Date;
 @Getter
 @Setter
-@NoArgsConstructor @RequiredArgsConstructor
 @Entity
 public class Appointment {
     @Id
