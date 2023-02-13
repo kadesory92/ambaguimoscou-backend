@@ -1,40 +1,51 @@
 package com.banatech.gn.ambaguimoscou.service;
 
 import com.banatech.gn.ambaguimoscou.domain.Category;
+import com.banatech.gn.ambaguimoscou.model.CategoryDTO;
+import com.banatech.gn.ambaguimoscou.model.ModelMappersDTO;
 import com.banatech.gn.ambaguimoscou.repository.CategoryRepository;
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
+@Service
+@Transactional
+@AllArgsConstructor
+@Slf4j
 public class CategoryServiceImpl implements CategoryService{
     private CategoryRepository categoryRepository;
-    public  CategoryServiceImpl(CategoryRepository categoryRepository){
-        this.categoryRepository=categoryRepository;
-    }
+    private ModelMappersDTO dtoModelMapper;
     @Override
-    public Category saveCategory(Category category) {
-         category=categoryRepository.save(category);
-        return category;
-    }
-
-    @Override
-    public Optional<Category> listCategory() {
-        List<Category> listsCategory=categoryRepository.findAll();
-        return Optional.empty();
+    public List<CategoryDTO> getAllCategoryList() {
+        List<Category> categories = categoryRepository.findAll();
+        List<CategoryDTO> categoryDTOS = categories.stream()
+                .map(category -> dtoModelMapper.categoryToCategoryDTO(category))
+                .collect(Collectors.toList());
+        return categoryDTOS;
     }
 
     @Override
-    public Category findCategory(Category category) {
+    public void save(CategoryDTO categoryDTO) {
+
+    }
+
+    @Override
+    public CategoryDTO findById(Integer id) {
         return null;
     }
 
     @Override
-    public Category updateCategory(Category category) {
+    public CategoryDTO update(Integer id) {
         return null;
     }
 
     @Override
-    public void removeCategory(Category category) {
+    public void delete(CategoryDTO categoryDTO) {
 
     }
 }

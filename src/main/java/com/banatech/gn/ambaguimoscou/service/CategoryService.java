@@ -1,13 +1,14 @@
 package com.banatech.gn.ambaguimoscou.service;
 
-import com.banatech.gn.ambaguimoscou.domain.Category;
+import com.banatech.gn.ambaguimoscou.model.CategoryDTO;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface CategoryService {
-    Category saveCategory(Category category);
-    Optional<Category> listCategory();
-    Category findCategory(Category category);
-    Category updateCategory(Category category);
-    void removeCategory(Category category);
+    public List<CategoryDTO> getAllCategoryList();
+    public void save(CategoryDTO categoryDTO);
+    public CategoryDTO findById(Integer id);
+    public CategoryDTO update(Integer id);
+    public void delete(CategoryDTO categoryDTO);
 }
